@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,72 +26,60 @@
   /* ===== BANNER ===== */
   .banner{
     position:relative;
-    background:
-      radial-gradient(circle at 20% 30%, rgba(255,107,26,.25), transparent 45%),
-      radial-gradient(circle at 80% 70%, rgba(74,14,78,.55), transparent 55%),
-      linear-gradient(160deg,#0d0d0d 0%,#1a1a1a 60%,#2a0f2e 100%);
-    padding:80px 20px 60px;
+    /* AQUÍ ESTÁ LA IMAGEN PÚBLICA DE PRUEBA */
+    background-image: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=1600&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--negro);
+    padding:120px 20px 100px;
     text-align:center;
     overflow:hidden;
     border-bottom:3px solid var(--naranja);
   }
+
+  /* Filtro oscuro para leer el texto */
   .banner::before{
     content:"";
     position:absolute;
-    top:0;left:0;right:0;
-    height:2px;
-    background:linear-gradient(90deg,transparent,var(--naranja),var(--purpura),var(--naranja),transparent);
-    animation:brillo 6s ease-in-out infinite;
+    top:0;left:0;right:0;bottom:0;
+    background: linear-gradient(180deg, rgba(13,13,13,0.7) 0%, rgba(13,13,13,0.9) 70%, rgba(13,13,13,1) 100%);
+    z-index:0;
   }
-  @keyframes brillo{
-    0%,100%{opacity:.4;}
-    50%{opacity:1;}
+
+  .banner-contenido{
+    position:relative;
+    z-index:1;
   }
-  .banner::after{
-    content:"";
-    position:absolute;
-    bottom:-40px;left:0;right:0;
-    height:120px;
-    background:radial-gradient(ellipse at center, rgba(74,14,78,.35), transparent 70%);
-    animation:niebla 10s ease-in-out infinite alternate;
-    pointer-events:none;
-  }
-  @keyframes niebla{
-    0%{transform:translateX(-20px);}
-    100%{transform:translateX(20px);}
-  }
+
   .banner h1{
     font-family:'Cinzel',serif;
-    font-size:clamp(2rem,5vw,3.5rem);
+    font-size:clamp(2.2rem,5vw,4rem);
     font-weight:800;
     letter-spacing:3px;
     text-transform:uppercase;
-    background:linear-gradient(90deg,var(--naranja),#ffb347,var(--naranja));
+    background:linear-gradient(90deg,#ff6b1a,#ffb347,#ff6b1a);
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
-    text-shadow:0 0 30px rgba(255,107,26,.3);
-    position:relative;
-    z-index:1;
+    text-shadow:0 4px 20px rgba(0,0,0,0.8);
   }
   .banner .mes{
     font-family:'Cinzel',serif;
     font-size:clamp(1rem,2.5vw,1.5rem);
-    color:var(--gris);
+    color:var(--humo);
     letter-spacing:8px;
     margin-top:12px;
     text-transform:uppercase;
-    position:relative;
-    z-index:1;
+    text-shadow:0 2px 10px rgba(0,0,0,0.9);
   }
   .banner .intro{
     max-width:720px;
     margin:24px auto 0;
-    color:var(--gris);
+    color:#dddddd;
     font-weight:300;
     font-size:1.05rem;
-    position:relative;
-    z-index:1;
+    text-shadow:0 2px 8px rgba(0,0,0,1);
   }
   .banner .intro strong{color:var(--naranja);font-weight:500;}
 
@@ -225,7 +212,7 @@
 
   /* ===== RESPONSIVE ===== */
   @media(max-width:600px){
-    .banner{padding:60px 16px 40px;}
+    .banner{padding:80px 16px 60px;}
     .contenedor{padding:40px 16px;}
     .grid{grid-template-columns:1fr;}
   }
@@ -233,133 +220,113 @@
 </head>
 <body>
 
-  <!-- BANNER -->
   <header class="banner">
-    <h1>Boletín de Novedades</h1>
-    <div class="mes">Octubre · Edición Especial Terror</div>
-    <p class="intro">
-      Cuando cae la noche y las luces parpadean, los libros susurran.
-      Esta selección reúne <strong>cómic, cine y narrativa de terror</strong>
-      para quienes se atreven a leer con la puerta cerrada.
-    </p>
+    <div class="banner-contenido">
+      <h1>Boletín de Novedades</h1>
+      <div class="mes">Octubre · Edición Especial Terror</div>
+      <p class="intro">
+        Cuando cae la noche y las luces parpadean, los libros susurran.
+        Esta selección reúne <strong>cómic, cine y narrativa de terror</strong>
+        para quienes se atreven a leer con la puerta cerrada.
+      </p>
+    </div>
   </header>
 
   <main class="contenedor">
-
-    <!-- SECCIÓN 1: TERROR EN CÓMIC Y PANTALLA -->
     <section class="seccion">
       <h2>Terror en cómic y pantalla</h2>
       <div class="linea"></div>
       <div class="grid">
-
         <article class="tarjeta">
           <span class="anio">2015</span>
           <h3>Marvel Comics' Civil War and the Age of Terror</h3>
           <p class="autor">Kevin Michael Scott</p>
           <a class="boton" href="https://ugc.overdrive.com/media/2393194" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2024</span>
           <h3>Retóricas del cine de terror: 50 películas esenciales para el estudio del terror cinematográfico</h3>
           <p class="autor">Higueras Flores, Rubén</p>
           <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/269355" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2026</span>
           <h3>2000: la vuelta del terror</h3>
           <p class="autor">Rivera, Antonio · Mateo, Eduardo</p>
           <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/300840" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2025</span>
           <h3>Shock Value. Como unos 'outsiders' provocaron pesadillas, conquistaron Hollywood y reinventaron el terror moderno</h3>
           <p class="autor">Zinoman, Jason</p>
           <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/289682" target="_blank">Leer ahora</a>
         </article>
-
       </div>
     </section>
 
-    <!-- SECCIÓN 2: HISTORIAS PARA NO DORMIR -->
     <section class="seccion">
       <h2>Historias para no dormir</h2>
       <div class="linea"></div>
       <div class="grid">
-
         <article class="tarjeta">
           <span class="anio">2025</span>
           <h3>No dejes entrar al bosque</h3>
           <p class="autor">C. G. Drews</p>
           <a class="boton" href="https://ugc.overdrive.com/media/12139406" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2023</span>
           <h3>Días de fantasmas</h3>
           <p class="autor">Jeanette Winterson · Laura Martín de Dios</p>
           <a class="boton" href="https://ugc.overdrive.com/media/10120375" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2025</span>
           <h3>Las hermanas del fuego e historias escritas a las 3:33</h3>
           <p class="autor">Jacar, Leopoldo</p>
           <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/294683" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2021</span>
           <h3>Cursed Bunny</h3>
           <p class="autor">Bora Chung · Anton Hur</p>
           <a class="boton" href="https://ugc.overdrive.com/media/10265009" target="_blank">Leer ahora</a>
         </article>
-
       </div>
     </section>
 
-    <!-- SECCIÓN 3: SUSPENSO Y MISTERIO -->
     <section class="seccion">
       <h2>Suspenso y misterio</h2>
       <div class="linea"></div>
       <div class="grid">
-
         <article class="tarjeta">
           <span class="anio">2022</span>
           <h3>El exorcismo de mi mejor amiga</h3>
           <p class="autor">Grady Hendrix · Joan Josep Mussarra Roca</p>
           <a class="boton" href="https://ugc.overdrive.com/media/9091644?cid=1853815" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2024</span>
           <h3>Acércate</h3>
           <p class="autor">Sara Gran · Sonia Román</p>
           <a class="boton" href="https://ugc.overdrive.com/media/10461180" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2016</span>
           <h3>Carrie</h3>
           <p class="autor">Stephen King · Gregorio Vlastelica</p>
           <a class="boton" href="https://ugc.overdrive.com/media/3954819" target="_blank">Leer ahora</a>
         </article>
-
         <article class="tarjeta">
           <span class="anio">2023</span>
           <h3>La última fiesta</h3>
           <p class="autor">Clare Mackintosh · Víctor Vázquez Monedero</p>
           <a class="boton" href="https://ugc.overdrive.com/media/9847420?cid=1853815" target="_blank">Leer ahora</a>
         </article>
-
       </div>
     </section>
-
   </main>
 
-  <!-- PIE -->
   <footer class="pie">
     <p>¿Te atreves a leerlos todos?</p>
     <small>BIBLIOTECA UGC · BOLETÍN OCTUBRE</small>
