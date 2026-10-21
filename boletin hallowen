@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boletín de Novedades · Octubre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --negro:#0d0d0d;
+    --carbon:#1a1a1a;
+    --naranja:#ff6b1a;
+    --purpura:#4a0e4e;
+    --verde:#7fff00;
+    --humo:#f5f5f5;
+    --gris:#b8b8b8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Roboto',sans-serif;
+    background:var(--negro);
+    color:var(--humo);
+    line-height:1.6;
+  }
+
+  /* ===== BANNER ===== */
+  .banner{
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,107,26,.25), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(74,14,78,.55), transparent 55%),
+      linear-gradient(160deg,#0d0d0d 0%,#1a1a1a 60%,#2a0f2e 100%);
+    padding:80px 20px 60px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:3px solid var(--naranja);
+  }
+  .banner::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:2px;
+    background:linear-gradient(90deg,transparent,var(--naranja),var(--purpura),var(--naranja),transparent);
+    animation:brillo 6s ease-in-out infinite;
+  }
+  @keyframes brillo{
+    0%,100%{opacity:.4;}
+    50%{opacity:1;}
+  }
+  .banner::after{
+    content:"";
+    position:absolute;
+    bottom:-40px;left:0;right:0;
+    height:120px;
+    background:radial-gradient(ellipse at center, rgba(74,14,78,.35), transparent 70%);
+    animation:niebla 10s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  @keyframes niebla{
+    0%{transform:translateX(-20px);}
+    100%{transform:translateX(20px);}
+  }
+  .banner h1{
+    font-family:'Cinzel',serif;
+    font-size:clamp(2rem,5vw,3.5rem);
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,var(--naranja),#ffb347,var(--naranja));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 30px rgba(255,107,26,.3);
+    position:relative;
+    z-index:1;
+  }
+  .banner .mes{
+    font-family:'Cinzel',serif;
+    font-size:clamp(1rem,2.5vw,1.5rem);
+    color:var(--gris);
+    letter-spacing:8px;
+    margin-top:12px;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .banner .intro{
+    max-width:720px;
+    margin:24px auto 0;
+    color:var(--gris);
+    font-weight:300;
+    font-size:1.05rem;
+    position:relative;
+    z-index:1;
+  }
+  .banner .intro strong{color:var(--naranja);font-weight:500;}
+
+  /* ===== CONTENEDOR ===== */
+  .contenedor{max-width:1200px;margin:0 auto;padding:60px 20px;}
+
+  /* ===== SECCIONES ===== */
+  .seccion{margin-bottom:70px;}
+  .seccion h2{
+    font-family:'Cinzel',serif;
+    font-size:clamp(1.4rem,3vw,2rem);
+    color:var(--humo);
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .seccion h2::before{
+    content:"";
+    display:inline-block;
+    width:8px;
+    height:28px;
+    background:linear-gradient(180deg,var(--naranja),var(--purpura));
+    border-radius:2px;
+    box-shadow:0 0 12px rgba(255,107,26,.5);
+  }
+  .seccion .linea{
+    height:3px;
+    width:80px;
+    background:linear-gradient(90deg,var(--naranja),transparent);
+    margin:0 0 32px 22px;
+    border-radius:2px;
+  }
+
+  /* ===== GRID DE TARJETAS ===== */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:24px;
+  }
+  .tarjeta{
+    background:linear-gradient(145deg,var(--carbon),#141414);
+    border:1px solid #2a2a2a;
+    border-radius:14px;
+    padding:24px 22px;
+    display:flex;
+    flex-direction:column;
+    transition:all .35s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .tarjeta::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:3px;
+    background:linear-gradient(90deg,var(--naranja),var(--purpura));
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .4s ease;
+  }
+  .tarjeta:hover{
+    transform:translateY(-6px);
+    border-color:var(--naranja);
+    box-shadow:0 12px 30px rgba(255,107,26,.18);
+  }
+  .tarjeta:hover::before{transform:scaleX(1);}
+
+  .tarjeta .anio{
+    display:inline-block;
+    align-self:flex-start;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:var(--negro);
+    background:var(--naranja);
+    padding:3px 10px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+  .tarjeta h3{
+    font-family:'Cinzel',serif;
+    font-size:1.05rem;
+    line-height:1.35;
+    color:var(--humo);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .tarjeta .autor{
+    font-size:.85rem;
+    color:var(--gris);
+    font-style:italic;
+    margin-bottom:20px;
+    flex-grow:1;
+  }
+  .tarjeta .boton{
+    display:inline-block;
+    text-align:center;
+    text-decoration:none;
+    font-weight:700;
+    font-size:.85rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--negro);
+    background:linear-gradient(90deg,var(--naranja),#ff9445);
+    padding:11px 16px;
+    border-radius:8px;
+    transition:all .3s ease;
+  }
+  .tarjeta .boton:hover{
+    background:linear-gradient(90deg,var(--verde),#a8ff60);
+    box-shadow:0 0 18px rgba(127,255,0,.5);
+    transform:scale(1.03);
+  }
+
+  /* ===== PIE ===== */
+  .pie{
+    text-align:center;
+    padding:50px 20px;
+    border-top:3px solid var(--purpura);
+    background:linear-gradient(180deg,#0d0d0d,#1a0510);
+  }
+  .pie p{
+    font-family:'Cinzel',serif;
+    font-size:1.3rem;
+    color:var(--naranja);
+    margin-bottom:8px;
+  }
+  .pie small{color:var(--gris);font-size:.85rem;letter-spacing:2px;}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:600px){
+    .banner{padding:60px 16px 40px;}
+    .contenedor{padding:40px 16px;}
+    .grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- BANNER -->
+  <header class="banner">
+    <h1>Boletín de Novedades</h1>
+    <div class="mes">Octubre · Edición Especial Terror</div>
+    <p class="intro">
+      Cuando cae la noche y las luces parpadean, los libros susurran.
+      Esta selección reúne <strong>cómic, cine y narrativa de terror</strong>
+      para quienes se atreven a leer con la puerta cerrada.
+    </p>
+  </header>
+
+  <main class="contenedor">
+
+    <!-- SECCIÓN 1: TERROR EN CÓMIC Y PANTALLA -->
+    <section class="seccion">
+      <h2>Terror en cómic y pantalla</h2>
+      <div class="linea"></div>
+      <div class="grid">
+
+        <article class="tarjeta">
+          <span class="anio">2015</span>
+          <h3>Marvel Comics' Civil War and the Age of Terror</h3>
+          <p class="autor">Kevin Michael Scott</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/2393194" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2024</span>
+          <h3>Retóricas del cine de terror: 50 películas esenciales para el estudio del terror cinematográfico</h3>
+          <p class="autor">Higueras Flores, Rubén</p>
+          <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/269355" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2026</span>
+          <h3>2000: la vuelta del terror</h3>
+          <p class="autor">Rivera, Antonio · Mateo, Eduardo</p>
+          <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/300840" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2025</span>
+          <h3>Shock Value. Como unos 'outsiders' provocaron pesadillas, conquistaron Hollywood y reinventaron el terror moderno</h3>
+          <p class="autor">Zinoman, Jason</p>
+          <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/289682" target="_blank">Leer ahora</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: HISTORIAS PARA NO DORMIR -->
+    <section class="seccion">
+      <h2>Historias para no dormir</h2>
+      <div class="linea"></div>
+      <div class="grid">
+
+        <article class="tarjeta">
+          <span class="anio">2025</span>
+          <h3>No dejes entrar al bosque</h3>
+          <p class="autor">C. G. Drews</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/12139406" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2023</span>
+          <h3>Días de fantasmas</h3>
+          <p class="autor">Jeanette Winterson · Laura Martín de Dios</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/10120375" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2025</span>
+          <h3>Las hermanas del fuego e historias escritas a las 3:33</h3>
+          <p class="autor">Jacar, Leopoldo</p>
+          <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/294683" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2021</span>
+          <h3>Cursed Bunny</h3>
+          <p class="autor">Bora Chung · Anton Hur</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/10265009" target="_blank">Leer ahora</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: SUSPENSO Y MISTERIO -->
+    <section class="seccion">
+      <h2>Suspenso y misterio</h2>
+      <div class="linea"></div>
+      <div class="grid">
+
+        <article class="tarjeta">
+          <span class="anio">2022</span>
+          <h3>El exorcismo de mi mejor amiga</h3>
+          <p class="autor">Grady Hendrix · Joan Josep Mussarra Roca</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/9091644?cid=1853815" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2024</span>
+          <h3>Acércate</h3>
+          <p class="autor">Sara Gran · Sonia Román</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/10461180" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2016</span>
+          <h3>Carrie</h3>
+          <p class="autor">Stephen King · Gregorio Vlastelica</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/3954819" target="_blank">Leer ahora</a>
+        </article>
+
+        <article class="tarjeta">
+          <span class="anio">2023</span>
+          <h3>La última fiesta</h3>
+          <p class="autor">Clare Mackintosh · Víctor Vázquez Monedero</p>
+          <a class="boton" href="https://ugc.overdrive.com/media/9847420?cid=1853815" target="_blank">Leer ahora</a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE -->
+  <footer class="pie">
+    <p>¿Te atreves a leerlos todos?</p>
+    <small>BIBLIOTECA UGC · BOLETÍN OCTUBRE</small>
+  </footer>
+
+</body>
+</html>
