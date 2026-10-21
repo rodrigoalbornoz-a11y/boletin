@@ -16,17 +16,27 @@
     --gris:#b8b8b8;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
+  
   body{
     font-family:'Roboto',sans-serif;
-    background:var(--negro);
     color:var(--humo);
     line-height:1.6;
+    
+    /* ===== FONDO GENERAL DE LA PÁGINA ===== */
+    /* Textura oscura sutil (puedes cambiar la URL por una tuya) */
+    background-image: 
+      linear-gradient(rgba(13,13,13,0.85), rgba(13,13,13,0.95)), /* Capa oscura para legibilidad */
+      url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
+    background-color: var(--negro);
   }
 
-  /* ===== BANNER CON IMAGEN ===== */
+  /* ===== BANNER CON IMAGEN (Intacto) ===== */
   .banner{
     position:relative;
-    /* AQUÍ VA TU IMAGEN (Reemplaza el enlace de Unsplash por el tuyo) */
+    /* AQUÍ VA TU IMAGEN DE CABECERA */
     background-image: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=1600&auto=format&fit=crop'); 
     background-size: cover;
     background-position: center 30%;
@@ -76,7 +86,11 @@
   .banner .intro strong{color:var(--naranja);font-weight:500;}
 
   /* ===== CONTENEDOR PRINCIPAL ===== */
-  .contenedor{max-width:1200px;margin:0 auto;padding:60px 20px;}
+  .contenedor{
+    max-width:1200px;
+    margin:0 auto;
+    padding:60px 20px;
+  }
 
   /* ===== SECCIONES Y TÍTULOS ===== */
   .seccion{margin-bottom:80px;}
@@ -110,8 +124,7 @@
   .carrusel-wrapper{
     position:relative;
     overflow: hidden;
-    padding: 10px 0 30px; /* Espacio para sombras */
-    /* Máscara para que los bordes se desvanezcan (opcional) */
+    padding: 10px 0 30px; 
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   }
@@ -120,33 +133,34 @@
     display: flex;
     gap: 24px;
     width: max-content;
-    /* Animación: 40s de duración, lineal, infinita */
     animation: scroll 40s linear infinite;
   }
 
-  /* Pausar animación al pasar el mouse */
   .carrusel-wrapper:hover .carrusel-track {
     animation-play-state: paused;
   }
 
   @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 12px)); } /* -50% para duplicados, -12px por el gap */
+    100% { transform: translateX(calc(-50% - 12px)); } 
   }
 
   /* ===== TARJETAS ===== */
   .tarjeta{
-    background:linear-gradient(145deg,var(--carbon),#141414);
+    /* El fondo de las tarjetas es un gradiente semi-transparente para que 
+       la textura del fondo general se asome sutilmente */
+    background:linear-gradient(145deg, rgba(26,26,26,0.95), rgba(20,20,20,0.98));
     border:1px solid #2a2a2a;
     border-radius:14px;
     padding:24px 22px;
-    width: 300px; /* Ancho fijo para el carrusel */
+    width: 300px; 
     flex-shrink: 0;
     display:flex;
     flex-direction:column;
     transition:all .35s ease;
     position:relative;
     overflow:hidden;
+    backdrop-filter: blur(5px); /* Desenfoca el fondo detrás de la tarjeta */
   }
   .tarjeta::before{
     content:"";
@@ -161,7 +175,7 @@
   .tarjeta:hover{
     transform:translateY(-6px);
     border-color:var(--naranja);
-    box-shadow:0 12px 30px rgba(255,107,26,.18);
+    box-shadow:0 12px 30px rgba(255,107,26,.25);
   }
   .tarjeta:hover::before{transform:scaleX(1);}
 
@@ -217,7 +231,9 @@
     text-align:center;
     padding:50px 20px;
     border-top:3px solid var(--purpura);
-    background:linear-gradient(180deg,#0d0d0d,#1a0510);
+    /* Fondo del pie semi-transparente para integrarse */
+    background:linear-gradient(180deg, rgba(13,13,13,0.8), rgba(26,5,16,0.95));
+    backdrop-filter: blur(5px);
   }
   .pie p{
     font-family:'Cinzel',serif;
@@ -231,7 +247,7 @@
   @media(max-width:600px){
     .banner{padding:80px 16px 60px;}
     .contenedor{padding:40px 16px;}
-    .tarjeta{width: 260px;} /* Tarjetas más pequeñas en móvil */
+    .tarjeta{width: 260px;}
   }
 </style>
 </head>
@@ -251,7 +267,7 @@
 
   <main class="contenedor">
 
-    <!-- SECCIÓN 1: CARRUSEL -->
+    <!-- SECCIÓN 1 -->
     <section class="seccion">
       <h2>Terror en cómic y pantalla</h2>
       <div class="linea"></div>
@@ -282,8 +298,7 @@
             <p class="autor">Zinoman, Jason</p>
             <a class="boton" href="https://elibro-net.bibliodigital.ugc.edu.co/es/lc/ugc/titulos/289682" target="_blank">Leer ahora</a>
           </article>
-
-          <!-- GRUPO DUPLICADO (Necesario para que el bucle sea perfecto) -->
+          <!-- GRUPO DUPLICADO -->
           <article class="tarjeta">
             <span class="anio">2015</span>
             <h3>Marvel Comics' Civil War and the Age of Terror</h3>
@@ -312,7 +327,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 2: CARRUSEL -->
+    <!-- SECCIÓN 2 -->
     <section class="seccion">
       <h2>Historias para no dormir</h2>
       <div class="linea"></div>
@@ -343,7 +358,6 @@
             <p class="autor">Bora Chung · Anton Hur</p>
             <a class="boton" href="https://ugc.overdrive.com/media/10265009" target="_blank">Leer ahora</a>
           </article>
-
           <!-- GRUPO DUPLICADO -->
           <article class="tarjeta">
             <span class="anio">2025</span>
@@ -373,7 +387,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: CARRUSEL -->
+    <!-- SECCIÓN 3 -->
     <section class="seccion">
       <h2>Suspenso y misterio</h2>
       <div class="linea"></div>
@@ -404,7 +418,6 @@
             <p class="autor">Clare Mackintosh · Víctor Vázquez Monedero</p>
             <a class="boton" href="https://ugc.overdrive.com/media/9847420?cid=1853815" target="_blank">Leer ahora</a>
           </article>
-
           <!-- GRUPO DUPLICADO -->
           <article class="tarjeta">
             <span class="anio">2022</span>
